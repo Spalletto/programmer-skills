@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1109</width>
+    <height>534</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Programmer Skills</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>-1</x>
+      <y>-1</y>
+      <width>1111</width>
+      <height>518</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Fira Code Retina</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>1111</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Retina</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Система оцінювання навичок програміста за методикою братів Дрейфус</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="name_box">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>280</y>
+        <width>481</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Retina</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>Ваше ім'я</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="start_button">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>440</y>
+        <width>481</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Retina</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Розпочати</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="quiz_page">
+     <widget class="QGroupBox" name="info_group">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>271</width>
+        <height>681</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Medium</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>Інформація</string>
+      </property>
+      <widget class="QLabel" name="info_level_label">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>60</y>
+         <width>181</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Fira Code Light</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Рівень -</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="info_question_label">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>90</y>
+         <width>181</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Fira Code Light</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Питання №</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="info_user_label">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>181</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Fira Code Light</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Користувач -</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="question_label">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>90</y>
+        <width>531</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>1. Переживаєте за успіх в роботі?</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radio1">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>240</y>
+        <width>141</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Light</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Сильно</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radio2">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>240</y>
+        <width>141</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Light</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Не дуже</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radio3">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>240</y>
+        <width>161</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Light</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Спокійний</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="restart_block_button">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>340</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Light</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Почати блок спочатку</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="previous_question_button">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>340</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Light</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Попереднє питання</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="next_question_button">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>340</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Fira Code Light</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Наступне питання</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="results_page">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>1091</width>
+        <height>511</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="novice_tab">
+       <attribute name="title">
+        <string>Новачок</string>
+       </attribute>
+       <widget class="QLabel" name="novice_tab_label">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>210</y>
+          <width>241</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Сумарний результат:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="advanced_novice_tab">
+       <attribute name="title">
+        <string>Твердий початківець</string>
+       </attribute>
+       <widget class="QLabel" name="advanced_novice_label">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>220</y>
+          <width>241</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Сумарний результат:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="competent_tab">
+       <attribute name="title">
+        <string>Компетентний</string>
+       </attribute>
+       <widget class="QLabel" name="competent_label">
+        <property name="geometry">
+         <rect>
+          <x>710</x>
+          <y>220</y>
+          <width>241</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Сумарний результат:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="proficient_tab">
+       <attribute name="title">
+        <string>Досвідчений</string>
+       </attribute>
+       <widget class="QLabel" name="proficient_label">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>220</y>
+          <width>241</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Сумарний результат:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="expert_tab">
+       <attribute name="title">
+        <string>Експерт</string>
+       </attribute>
+       <widget class="QLabel" name="expert_label">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>210</y>
+          <width>241</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Сумарний результат:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="final_result_tab">
+       <attribute name="title">
+        <string>Загальний результат</string>
+       </attribute>
+       <widget class="QLabel" name="result_level_label">
+        <property name="geometry">
+         <rect>
+          <x>600</x>
+          <y>200</y>
+          <width>321</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Вітаємо, Ваш рівень - </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="result_score_label">
+        <property name="geometry">
+         <rect>
+          <x>600</x>
+          <y>260</y>
+          <width>321</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Ви отримали</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <action name="actionMain_menu">
+   <property name="text">
+    <string>Main menu</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
