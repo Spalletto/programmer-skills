@@ -14,7 +14,7 @@
    <string>Programmer Skills</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="stackedWidget">
+   <widget class="QStackedWidget" name="views">
     <property name="geometry">
      <rect>
       <x>-1</x>
@@ -32,7 +32,7 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="main_page">
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
@@ -180,10 +180,10 @@
      <widget class="QLabel" name="question_label">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>90</y>
-        <width>531</width>
-        <height>16</height>
+        <x>290</x>
+        <y>80</y>
+        <width>811</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -193,15 +193,21 @@
        </font>
       </property>
       <property name="text">
-       <string>1. Переживаєте за успіх в роботі?</string>
+       <string>Переживаєте за успіх в роботі?</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QRadioButton" name="radio1">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>360</x>
         <y>240</y>
-        <width>141</width>
+        <width>211</width>
         <height>17</height>
        </rect>
       </property>
@@ -221,9 +227,9 @@
      <widget class="QRadioButton" name="radio2">
       <property name="geometry">
        <rect>
-        <x>650</x>
+        <x>600</x>
         <y>240</y>
-        <width>141</width>
+        <width>211</width>
         <height>17</height>
        </rect>
       </property>
@@ -240,9 +246,9 @@
      <widget class="QRadioButton" name="radio3">
       <property name="geometry">
        <rect>
-        <x>820</x>
+        <x>830</x>
         <y>240</y>
-        <width>161</width>
+        <width>211</width>
         <height>17</height>
        </rect>
       </property>
