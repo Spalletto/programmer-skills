@@ -32,6 +32,19 @@ class Game:
         else:
             return 5
 
+    @property
+    def block_str(self):
+        if self.question_number < 5:
+            return "Новачок"
+        elif self.question_number < 8:
+            return "Твердий початківець"
+        elif self.question_number < 11:
+            return "Компетентний"
+        elif self.question_number < 13:
+            return "Досвідчений"
+        else:
+            return "Експерт"
+
     def prev(self):
         if self.question_number != 1:
             self.question_number -= 1
@@ -57,7 +70,10 @@ class Window(QtWidgets.QMainWindow):
 
     def UI_init_button_handlers(self):
         self.start_button.clicked.connect(self.start_quiz)
+        self.start_button.clicked.connect(self.UI_update_info)
         self.next_question_button.clicked.connect(self.next_question)
+        self.next_question_button.clicked.connect(self.UI_update_info)
+        self.previous_question_button.clicked.connect(self.UI_update_info)
 
     def start_quiz(self):
         user_name = self.name_box.text()
@@ -71,6 +87,11 @@ class Window(QtWidgets.QMainWindow):
         for i in range(3):
             radio = self.findChild(QRadioButton, f"radio{i+1}")
             radio.setText(list(question.answers.keys())[i])
+
+    def UI_update_info(self):
+        self.info_user_label.setText(f"Користувач - {self.player.name}")
+        self.info_level_label.setText(f"Рівень - {self.game.question_number}")
+        self.info_question_label.setText(f"Блок - {self.game.block_str}")
 
     def checked_radio_number(self):
         for i in range(3):
