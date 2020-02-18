@@ -18,7 +18,6 @@ class Game:
         self.questions = questions
         self.question_number = 1
         self.question_answers = {}
-        self.score = 0
 
     @property
     def block_number(self):
@@ -73,30 +72,24 @@ class Window(QtWidgets.QMainWindow):
             radio = self.findChild(QRadioButton, f"radio{i+1}")
             radio.setText(list(question.answers.keys())[i])
 
-    def checked_radio_text(self):
+    def checked_radio_number(self):
         for i in range(3):
             radio = self.findChild(QRadioButton, f"radio{i+1}")
             if radio.isChecked():
-                print(radio.text())
-                return radio.text()
+                return i
 
-    def evaluate_previous_question(self, answer):
-        print(answer.encode("utf-8"))
-
-        mark = self.game.questions[self.game.question_number].answers[answer]
-        mark = self.game.questions[self.game.question_number].answers.get(answer)
-        self.game.score += mark
-        self.game.question_answers[self.game.question_number] = mark
+    def evaluate_previous_question(self, answer_number):
+        answers = list(self.game.questions[self.game.question_number-1].answers.values())
+        answer_score = answers[answer_number]
+        self.game.question_answers[self.game.question_number] = answer_score
 
     def next_question(self):
-        self.evaluate_previous_question(self.checked_radio_text())
+        self.evaluate_previous_question(self.checked_radio_number())
         next_question = self.game.next()
         if next_question:
             self.UI_question_init(next_question)
         else:
-            print(self.game.score)
             print(self.game.question_answers)
-
 
 
 if __name__ == "__main__":
