@@ -73,6 +73,7 @@ class Window(QtWidgets.QMainWindow):
         self.start_button.clicked.connect(self.UI_update_info)
         self.next_question_button.clicked.connect(self.next_question)
         self.next_question_button.clicked.connect(self.UI_update_info)
+        self.previous_question_button.clicked.connect(self.previous_question)
         self.previous_question_button.clicked.connect(self.UI_update_info)
 
     def start_quiz(self):
@@ -111,6 +112,10 @@ class Window(QtWidgets.QMainWindow):
             self.UI_question_init(next_question)
         else:
             print(self.game.question_answers)
+
+    def previous_question(self):
+        previous_question = self.game.prev()
+        self.UI_question_init(previous_question)
 
 
 if __name__ == "__main__":
