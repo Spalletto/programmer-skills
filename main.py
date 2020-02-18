@@ -1,12 +1,13 @@
 import sys
-from functools import partial
+import matplotlib.pyplot as plt
 
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from PyQt5 import QtCore, QtWidgets, uic
 from PyQt5.QtCore import pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import (QRadioButton, QComboBox, QLabel, QTableWidget,
-                             QTableWidgetItem)
+from PyQt5.QtWidgets import (QRadioButton, QLabel, QGridLayout)
 
-from init import quiz, questions
+from init import quiz, questions, blocks
 
 class User:
     def __init__(self, name):
@@ -65,11 +66,30 @@ class Window(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("main.ui", self)
-        self.init_UI()
+
         self.UI_init_button_handlers()
 
     def init_UI(self):
         pass
+
+    def UI_init_plot(self):
+        prev_size = 0
+        max_size = 0
+
+        for block, size in blocks.items():
+            prev_size = max_size
+            max_size += size
+            x_labels = [f"Питання №{i+1}" for i in range(size)]
+            self.figure = plt.figure()
+            self.canvas = FigureCanvas(self.figure)
+            self.toolbar = NavigationToolbar(self.canvas, self)
+            self.ax = self.figure.add_subplot(111)
+            self.ax.bar(list(range(prev_size, max_size)), list(self.game.question_answers.values())[prev_size:max_size])
+            plt.xticks(list(range(prev_size, max_size)), x_labels)
+            layout = self.findChild(QGridLayout, f"{block}_layout")
+            layout.addWidget(self.canvas)
+            layout.addWidget(self.toolbar)
+
 
     def UI_init_button_handlers(self):
         self.start_button.clicked.connect(self.start_quiz)
@@ -117,8 +137,8 @@ class Window(QtWidgets.QMainWindow):
             self.UI_question_init(next_question)
         else:
             print(self.game.question_answers)
-
-
+            self.UI_init_plot()
+            self.views.setCurrentIndex(2)
 
     def previous_question(self):
         previous_question = self.game.prev()
@@ -127,7 +147,6 @@ class Window(QtWidgets.QMainWindow):
     def restart_block(self):
         self.game.block_start_question()
         self.UI_question_init(self.game.question)
-
 
 
 if __name__ == "__main__":
