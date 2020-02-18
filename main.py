@@ -73,23 +73,52 @@ class Window(QtWidgets.QMainWindow):
         pass
 
     def UI_init_plot(self):
-        prev_size = 0
-        max_size = 0
+        for block, (start, end) in blocks.items():
+            layout_name = f"{block}_layout"
+            x_labels = [f"Питання №{i+1}" for i in range(end - start + 1)]
+            questions = list(range(start-1, end))
+            answers = list(self.game.question_answers.values())[start-1:end]
+            self.draw_bar_plot(questions, answers, x_labels, layout_name)
 
-        for block, size in blocks.items():
-            prev_size = max_size
-            max_size += size
-            x_labels = [f"Питання №{i+1}" for i in range(size)]
-            self.figure = plt.figure()
-            self.canvas = FigureCanvas(self.figure)
-            self.toolbar = NavigationToolbar(self.canvas, self)
-            self.ax = self.figure.add_subplot(111)
-            self.ax.bar(list(range(prev_size, max_size)), list(self.game.question_answers.values())[prev_size:max_size])
-            plt.xticks(list(range(prev_size, max_size)), x_labels)
-            layout = self.findChild(QGridLayout, f"{block}_layout")
-            layout.addWidget(self.canvas)
-            layout.addWidget(self.toolbar)
+            label = self.findChild(QLabel, f"{block}_tab_label")
+            label.setText(f"Ваш результат - {sum(answers)}")
 
+        novice_answers = list(self.game.question_answers.values())[0:4]
+        beginner_answers = list(self.game.question_answers.values())[4:7]
+        competent_answers = list(self.game.question_answers.values())[7:10]
+        proficient_answers = list(self.game.question_answers.values())[10:13]
+        expert_answers = list(self.game.question_answers.values())[13:16]
+        first_question = [novice_answers[0], beginner_answers[0], competent_answers[0], proficient_answers[0], expert_answers[0]]
+        second_question = [novice_answers[1], beginner_answers[1], competent_answers[1], proficient_answers[1], expert_answers[1]]
+        third_question = [novice_answers[2], beginner_answers[2], competent_answers[2], proficient_answers[2], expert_answers[2]]
+        fourth_question = [novice_answers[3]]
+        questions = [i for i, _ in enumerate(first_question)]
+        self.figure = plt.figure()
+        self.canvas = FigureCanvas(self.figure)
+        self.toolbar = NavigationToolbar(self.canvas, self)
+        self.ax = self.figure.add_subplot(111)
+        # self.ax.bar(questions[:-1], fourth_question, bottom=third_question +
+        #             second_question+first_question, color='r')
+        self.ax.bar(questions, third_question, bottom=second_question +
+                    first_question, color='o')
+        self.ax.bar(questions, second_question,
+                    bottom=first_question, color='y')
+        self.ax.bar(questions, first_question, color='g')
+        #plt.xticks(questions, x_labels)
+        layout = self.findChild(QGridLayout, layout_name)
+        layout.addWidget(self.canvas)
+        layout.addWidget(self.toolbar)
+
+    def draw_bar_plot(self, x, y, x_labels, layout_name):
+        self.figure = plt.figure()
+        self.canvas = FigureCanvas(self.figure)
+        self.toolbar = NavigationToolbar(self.canvas, self)
+        self.ax = self.figure.add_subplot(111)
+        self.ax.bar(x, y)
+        plt.xticks(x, x_labels)
+        layout = self.findChild(QGridLayout, layout_name)
+        layout.addWidget(self.canvas)
+        layout.addWidget(self.toolbar)
 
     def UI_init_button_handlers(self):
         self.start_button.clicked.connect(self.start_quiz)

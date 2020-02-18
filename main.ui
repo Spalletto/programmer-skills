@@ -351,7 +351,7 @@
         <property name="geometry">
          <rect>
           <x>630</x>
-          <y>185</y>
+          <y>200</y>
           <width>321</width>
           <height>41</height>
          </rect>
@@ -369,9 +369,9 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>10</y>
-          <width>581</width>
-          <height>461</height>
+          <y>0</y>
+          <width>561</width>
+          <height>481</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="novice_layout"/>
@@ -381,13 +381,24 @@
        <attribute name="title">
         <string>Твердий початківець</string>
        </attribute>
-       <widget class="QLabel" name="advanced_novice_label">
+       <widget class="QWidget" name="gridLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>680</x>
-          <y>220</y>
-          <width>241</width>
-          <height>16</height>
+          <x>0</x>
+          <y>0</y>
+          <width>561</width>
+          <height>481</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="beginner_layout"/>
+       </widget>
+       <widget class="QLabel" name="beginner_tab_label">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>200</y>
+          <width>321</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -398,30 +409,30 @@
         <property name="text">
          <string>Сумарний результат:</string>
         </property>
-       </widget>
-       <widget class="QWidget" name="gridLayoutWidget_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>581</width>
-          <height>461</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="beginner_layout"/>
        </widget>
       </widget>
       <widget class="QWidget" name="competent_tab">
        <attribute name="title">
         <string>Компетентний</string>
        </attribute>
-       <widget class="QLabel" name="competent_label">
+       <widget class="QWidget" name="gridLayoutWidget_3">
         <property name="geometry">
          <rect>
-          <x>710</x>
-          <y>220</y>
-          <width>241</width>
-          <height>16</height>
+          <x>0</x>
+          <y>0</y>
+          <width>561</width>
+          <height>481</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="competent_layout"/>
+       </widget>
+       <widget class="QLabel" name="competent_tab_label">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>200</y>
+          <width>321</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -432,30 +443,30 @@
         <property name="text">
          <string>Сумарний результат:</string>
         </property>
-       </widget>
-       <widget class="QWidget" name="gridLayoutWidget_3">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>581</width>
-          <height>461</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="competent_layout"/>
        </widget>
       </widget>
       <widget class="QWidget" name="proficient_tab">
        <attribute name="title">
         <string>Досвідчений</string>
        </attribute>
-       <widget class="QLabel" name="proficient_label">
+       <widget class="QWidget" name="gridLayoutWidget_4">
         <property name="geometry">
          <rect>
-          <x>730</x>
-          <y>220</y>
-          <width>241</width>
-          <height>16</height>
+          <x>0</x>
+          <y>0</y>
+          <width>561</width>
+          <height>481</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="proficient_layout"/>
+       </widget>
+       <widget class="QLabel" name="proficient_tab_label">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>200</y>
+          <width>321</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -466,30 +477,30 @@
         <property name="text">
          <string>Сумарний результат:</string>
         </property>
-       </widget>
-       <widget class="QWidget" name="gridLayoutWidget_4">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>581</width>
-          <height>461</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="proficient_layout"/>
        </widget>
       </widget>
       <widget class="QWidget" name="expert_tab">
        <attribute name="title">
         <string>Експерт</string>
        </attribute>
-       <widget class="QLabel" name="expert_label">
+       <widget class="QWidget" name="gridLayoutWidget_5">
         <property name="geometry">
          <rect>
-          <x>730</x>
-          <y>210</y>
-          <width>241</width>
-          <height>16</height>
+          <x>0</x>
+          <y>0</y>
+          <width>561</width>
+          <height>481</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="expert_layout"/>
+       </widget>
+       <widget class="QLabel" name="expert_tab_label">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>200</y>
+          <width>321</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -500,17 +511,6 @@
         <property name="text">
          <string>Сумарний результат:</string>
         </property>
-       </widget>
-       <widget class="QWidget" name="gridLayoutWidget_5">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>581</width>
-          <height>461</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="expert_layout"/>
        </widget>
       </widget>
       <widget class="QWidget" name="final_result_tab">
@@ -521,9 +521,9 @@
         <property name="geometry">
          <rect>
           <x>600</x>
-          <y>200</y>
+          <y>185</y>
           <width>321</width>
-          <height>16</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="font">
@@ -539,9 +539,9 @@
         <property name="geometry">
          <rect>
           <x>600</x>
-          <y>260</y>
+          <y>245</y>
           <width>321</width>
-          <height>16</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="font">
@@ -552,6 +552,17 @@
         <property name="text">
          <string>Ви отримали</string>
         </property>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>561</width>
+          <height>481</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="result_layout"/>
        </widget>
       </widget>
      </widget>
