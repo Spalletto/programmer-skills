@@ -19,18 +19,21 @@ class Game:
         self.question_number = 1
         self.question_answers = {}
 
-    @property
-    def block_number(self):
+    def block_start_question(self):
         if self.question_number < 5:
-            return 1
+            self.question_number = 1
         elif self.question_number < 8:
-            return 2
+            self.question_number = 5
         elif self.question_number < 11:
-            return 3
+            self.question_number = 8
         elif self.question_number < 13:
-            return 4
+            self.question_number = 11
         else:
-            return 5
+            self.question_number = 13
+
+    @property
+    def question(self):
+        return self.questions[self.question_number]
 
     @property
     def block_str(self):
@@ -75,6 +78,8 @@ class Window(QtWidgets.QMainWindow):
         self.next_question_button.clicked.connect(self.UI_update_info)
         self.previous_question_button.clicked.connect(self.previous_question)
         self.previous_question_button.clicked.connect(self.UI_update_info)
+        self.restart_block_button.clicked.connect(self.restart_block)
+        self.restart_block_button.clicked.connect(self.UI_update_info)
 
     def start_quiz(self):
         user_name = self.name_box.text()
@@ -113,9 +118,16 @@ class Window(QtWidgets.QMainWindow):
         else:
             print(self.game.question_answers)
 
+
+
     def previous_question(self):
         previous_question = self.game.prev()
         self.UI_question_init(previous_question)
+
+    def restart_block(self):
+        self.game.block_start_question()
+        self.UI_question_init(self.game.question)
+
 
 
 if __name__ == "__main__":
