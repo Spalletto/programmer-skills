@@ -1,13 +1,13 @@
 import sys
 import matplotlib.pyplot as plt
-
+import numpy as np
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from PyQt5 import QtCore, QtWidgets, uic
 from PyQt5.QtCore import pyqtSignal, pyqtSlot
 from PyQt5.QtWidgets import (QRadioButton, QLabel, QGridLayout)
 
-from init import quiz, questions, blocks
+from init import quiz, questions, blocks, block_names
 
 class User:
     def __init__(self, name):
@@ -88,26 +88,27 @@ class Window(QtWidgets.QMainWindow):
         competent_answers = list(self.game.question_answers.values())[7:10]
         proficient_answers = list(self.game.question_answers.values())[10:13]
         expert_answers = list(self.game.question_answers.values())[13:16]
-        first_question = [novice_answers[0], beginner_answers[0], competent_answers[0], proficient_answers[0], expert_answers[0]]
-        second_question = [novice_answers[1], beginner_answers[1], competent_answers[1], proficient_answers[1], expert_answers[1]]
-        third_question = [novice_answers[2], beginner_answers[2], competent_answers[2], proficient_answers[2], expert_answers[2]]
-        fourth_question = [novice_answers[3]]
+        first_question = np.array([novice_answers[0], beginner_answers[0], competent_answers[0], proficient_answers[0], expert_answers[0]])
+        second_question = np.array([novice_answers[1], beginner_answers[1], competent_answers[1], proficient_answers[1], expert_answers[1]])
+        third_question = np.array([novice_answers[2], beginner_answers[2], competent_answers[2], proficient_answers[2], expert_answers[2]])
+        fourth_question = np.array([novice_answers[3], 0, 0, 0, 0])
         questions = [i for i, _ in enumerate(first_question)]
         self.figure = plt.figure()
         self.canvas = FigureCanvas(self.figure)
         self.toolbar = NavigationToolbar(self.canvas, self)
         self.ax = self.figure.add_subplot(111)
-        # self.ax.bar(questions[:-1], fourth_question, bottom=third_question +
-        #             second_question+first_question, color='r')
-        self.ax.bar(questions, third_question, bottom=second_question +
-                    first_question, color='o')
+        self.ax.bar(questions, fourth_question,
+                    bottom=first_question + second_question + third_question, color='b')
+        self.ax.bar(questions, third_question, bottom=first_question + second_question, color='r')
         self.ax.bar(questions, second_question,
                     bottom=first_question, color='y')
         self.ax.bar(questions, first_question, color='g')
-        #plt.xticks(questions, x_labels)
-        layout = self.findChild(QGridLayout, layout_name)
+        plt.xticks(questions, block_names)
+        layout = self.findChild(QGridLayout, 'result_layout')
         layout.addWidget(self.canvas)
         layout.addWidget(self.toolbar)
+
+        self.result_score_label.setText(f"Ви отримали - {sum(self.game.question_answers.values())} балів.")
 
     def draw_bar_plot(self, x, y, x_labels, layout_name):
         self.figure = plt.figure()
