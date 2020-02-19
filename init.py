@@ -45,6 +45,6 @@ block4 = Block([question10, question11, question12])
 block5 = Block([question13, question14, question15])
 
 quiz = Quiz([block1, block2, block3, block4, block5])
-questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15, question16]
+questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15]
 blocks = {'novice': (1, 3), 'beginner': (4, 6), 'competent': (7, 9), 'proficient': (10, 12), 'expert': (13, 15)}
 block_names = ['Новачок', 'Твердий\n початківець', 'Компетентний', 'Продвинутий', 'Експерт']

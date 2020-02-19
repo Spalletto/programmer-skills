@@ -188,6 +188,24 @@
         <string>Користувач -</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="restart_game_button">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>460</y>
+         <width>211</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Fira Code Light</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Почати спочатку</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QLabel" name="question_label">
       <property name="geometry">
@@ -521,7 +539,7 @@
         <property name="geometry">
          <rect>
           <x>670</x>
-          <y>185</y>
+          <y>20</y>
           <width>321</width>
           <height>31</height>
          </rect>
@@ -539,7 +557,7 @@
         <property name="geometry">
          <rect>
           <x>670</x>
-          <y>245</y>
+          <y>200</y>
           <width>321</width>
           <height>31</height>
          </rect>

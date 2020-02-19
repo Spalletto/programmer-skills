@@ -21,16 +21,16 @@ class Game:
         self.question_answers = {}
 
     def block_start_question(self):
-        if self.question_number < 5:
+        if self.question_number < 4:
             self.question_number = 1
-        elif self.question_number < 8:
-            self.question_number = 5
-        elif self.question_number < 11:
-            self.question_number = 8
-        elif self.question_number < 13:
-            self.question_number = 11
+        elif self.question_number < 7:
+            self.question_number = 4
+        elif self.question_number < 10:
+            self.question_number = 7
+        elif self.question_number < 12:
+            self.question_number = 10
         else:
-            self.question_number = 13
+            self.question_number = 12
 
     @property
     def question(self):
@@ -38,13 +38,13 @@ class Game:
 
     @property
     def block_str(self):
-        if self.question_number < 5:
+        if self.question_number < 4:
             return "Новачок"
-        elif self.question_number < 8:
+        elif self.question_number < 7:
             return "Твердий початківець"
-        elif self.question_number < 11:
+        elif self.question_number < 10:
             return "Компетентний"
-        elif self.question_number < 13:
+        elif self.question_number < 12:
             return "Досвідчений"
         else:
             return "Експерт"
@@ -55,7 +55,7 @@ class Game:
         return self.questions[self.question_number-1]
 
     def next(self):
-        if self.question_number != 16:
+        if self.question_number != 15:
             self.question_number += 1
             return self.questions[self.question_number-1]
         else:
@@ -83,22 +83,21 @@ class Window(QtWidgets.QMainWindow):
             label = self.findChild(QLabel, f"{block}_tab_label")
             label.setText(f"Ваш результат - {sum(answers)}")
 
-        novice_answers = list(self.game.question_answers.values())[0:4]
-        beginner_answers = list(self.game.question_answers.values())[4:7]
-        competent_answers = list(self.game.question_answers.values())[7:10]
-        proficient_answers = list(self.game.question_answers.values())[10:13]
-        expert_answers = list(self.game.question_answers.values())[13:16]
+        novice_answers = list(self.game.question_answers.values())[0:3]
+        beginner_answers = list(self.game.question_answers.values())[3:6]
+        competent_answers = list(self.game.question_answers.values())[6:9]
+        proficient_answers = list(self.game.question_answers.values())[9:12]
+        expert_answers = list(self.game.question_answers.values())[12:15]
+        print(novice_answers, beginner_answers, competent_answers, proficient_answers, expert_answers)
         first_question = np.array([novice_answers[0], beginner_answers[0], competent_answers[0], proficient_answers[0], expert_answers[0]])
         second_question = np.array([novice_answers[1], beginner_answers[1], competent_answers[1], proficient_answers[1], expert_answers[1]])
         third_question = np.array([novice_answers[2], beginner_answers[2], competent_answers[2], proficient_answers[2], expert_answers[2]])
-        fourth_question = np.array([novice_answers[3], 0, 0, 0, 0])
+
         questions = [i for i, _ in enumerate(first_question)]
         self.figure = plt.figure()
         self.canvas = FigureCanvas(self.figure)
         self.toolbar = NavigationToolbar(self.canvas, self)
         self.ax = self.figure.add_subplot(111)
-        self.ax.bar(questions, fourth_question,
-                    bottom=first_question + second_question + third_question, color='b')
         self.ax.bar(questions, third_question, bottom=first_question + second_question, color='r')
         self.ax.bar(questions, second_question,
                     bottom=first_question, color='y')
@@ -109,6 +108,7 @@ class Window(QtWidgets.QMainWindow):
         layout.addWidget(self.toolbar)
 
         self.result_score_label.setText(f"Ви отримали - {sum(self.game.question_answers.values())} балів.")
+
 
     def draw_bar_plot(self, x, y, x_labels, layout_name):
         self.figure = plt.figure()
@@ -130,6 +130,10 @@ class Window(QtWidgets.QMainWindow):
         self.previous_question_button.clicked.connect(self.UI_update_info)
         self.restart_block_button.clicked.connect(self.restart_block)
         self.restart_block_button.clicked.connect(self.UI_update_info)
+        self.restart_game_button.clicked.connect(self.restart_game)
+
+    def restart_game(self):
+        self.views.setCurrentIndex(0)
 
     def start_quiz(self):
         user_name = self.name_box.text()
